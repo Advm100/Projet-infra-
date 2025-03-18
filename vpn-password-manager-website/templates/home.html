@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>VPN & Password Manager</title>
+</head>
+<body>
+    <header>
+        <h1>MDP TAHNA</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('vpn') }}">VPN Service</a></li>
+                <li><a href="{{ url_for('password_manager') }}">Password Manager</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Your Online Security Matters</h2>
+            <p>Protect your online presence with our reliable VPN service and manage your passwords securely.</p>
+            <p>Join us today and experience the peace of mind that comes with enhanced security.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 VPN & Password Manager. All rights reserved.</p>
+    </footer>
+</body>
+</html>

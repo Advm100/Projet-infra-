@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>About Us - VPN and Password Manager</title>
+</head>
+<body>
+    <header>
+        <h1>About Us</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('vpn') }}">VPN</a></li>
+                <li><a href="{{ url_for('password_manager') }}">Password Manager</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Our Mission</h2>
+            <p>We aim to provide secure and reliable VPN services along with a powerful password manager to ensure your online safety and privacy.</p>
+        </section>
+        <section>
+            <h2>Our Team</h2>
+            <p>We are a group of passionate developers and security experts dedicated to creating tools that help users protect their digital lives.</p>
+        </section>
+        <section>
+            <h2>Contact Us</h2>
+            <p>If you have any questions or feedback, feel free to reach out to us at <a href="mailto:support@vpnpasswordmanager.com">support@vpnpasswordmanager.com</a>.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 VPN and Password Manager. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPN Service</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Secure Your Connection with Our VPN</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('vpn') }}">VPN</a></li>
+                <li><a href="{{ url_for('password_manager') }}">Password Manager</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="features">
+            <h2>Features</h2>
+            <ul>
+                <li>High-speed connections</li>
+                <li>Military-grade encryption</li>
+                <li>No logs policy</li>
+                <li>Access to geo-restricted content</li>
+            </ul>
+        </section>
+
+        <section id="pricing">
+            <h2>Pricing Plans</h2>
+            <div class="pricing-plan">
+                <h3>Basic Plan</h3>
+                <p>$5/month</p>
+                <button>Sign Up</button>
+            </div>
+            <div class="pricing-plan">
+                <h3>Pro Plan</h3>
+                <p>$10/month</p>
+                <button>Sign Up</button>
+            </div>
+            <div class="pricing-plan">
+                <h3>Premium Plan</h3>
+                <p>$15/month</p>
+                <button>Sign Up</button>
+            </div>
+        </section>
+
+        <section id="cta">
+            <h2>Get Started Today!</h2>
+            <p>Join us and experience the internet without limits.</p>
+            <button>Sign Up Now</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 VPN Password Manager. All rights reserved.</p>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='js/vpn.js') }}"></script>
+</body>
+</html>
