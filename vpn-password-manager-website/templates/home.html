@@ -1,94 +1,286 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SecurePass - Gestionnaire de mots de passe</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecurePass - Gestionnaire de mots de passe</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <i>🔒</i>
-            <h1>SecurePass</h1>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fas fa-shield-alt"></i>
+        <h1>SecurePass</h1>
+      </div>
+      <nav>
+        <ul>
+          <li class="active"><a href="#dashboard"><i class="fas fa-home"></i> Accueil</a></li>
+          <li><a href="#passwords"><i class="fas fa-key"></i> Mots de passe</a></li>
+          <li><a href="#generator"><i class="fas fa-dice"></i> Générateur</a></li>
+          <li><a href="#stats"><i class="fas fa-chart-line"></i> Statistiques</a></li>
+          <li><a href="#settings"><i class="fas fa-cog"></i> Paramètres</a></li>
+        </ul>
+      </nav>
+      <div class="user-info">
+        <div class="user-avatar"><i class="fas fa-user"></i></div>
+        <div class="user-details">
+          <span class="username">Non connecté</span>
+          <span class="status offline">Déconnecté</span>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Mots de passe</a></li>
-                <li><a href="#">Générateur</a></li>
-                <li><a href="#">Paramètres</a></li>
-            </ul>
-        </nav>
-    </header>
+      </div>
+    </aside>
 
-    <div class="container">
-        <section class="auth-section">
-            <h2>Connexion</h2>
-            <form>
-                <div class="form-group">
-                    <label for="master-password">Mot de passe principal</label>
-                    <input type="password" id="master-password" placeholder="Entrez votre mot de passe principal">
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Login View -->
+      <section id="login-view" class="active-view">
+        <div class="auth-section">
+          <div class="auth-card">
+            <div class="auth-header">
+              <i class="fas fa-shield-alt auth-icon"></i>
+              <h2>Connexion à SecurePass</h2>
+              <p>Gestionnaire de mots de passe sécurisé</p>
+            </div>
+            <form id="login-form">
+              <div class="form-group">
+                <label for="username"><i class="fas fa-user"></i> Nom d'utilisateur</label>
+                <input type="text" id="username" placeholder="Entrez votre nom d'utilisateur">
+              </div>
+              <div class="form-group">
+                <label for="master-password"><i class="fas fa-lock"></i> Mot de passe principal</label>
+                <div class="password-input-container">
+                  <input type="password" id="master-password" placeholder="Entrez votre mot de passe principal">
+                  <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
                 </div>
-                <button type="submit" class="btn">Se connecter</button>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">Se souvenir de moi</label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-login">
+                <i class="fas fa-sign-in-alt"></i> Se connecter
+              </button>
             </form>
-        </section>
+            <div class="auth-footer">
+              <p>Pas encore de compte? <a href="#" id="register-link">S'inscrire</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <section class="password-manager">
-            <h2>Mes mots de passe</h2>
-            <div class="search-bar">
-                <input type="text" placeholder="Rechercher un site ou un nom d'utilisateur...">
+      <!-- Dashboard View (hidden by default) -->
+      <section id="dashboard-view" class="view">
+        <div class="dashboard-header">
+          <h2><i class="fas fa-tachometer-alt"></i> Tableau de bord</h2>
+          <div class="dashboard-actions">
+            <button class="btn btn-outline"><i class="fas fa-sync-alt"></i> Actualiser</button>
+            <div class="user-dropdown">
+              <button class="btn btn-user" id="user-menu-btn">
+                <i class="fas fa-user-circle"></i>
+                <span class="username-display">Utilisateur</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="dropdown-menu">
+                <a href="#profile"><i class="fas fa-id-card"></i> Profil</a>
+                <a href="#settings"><i class="fas fa-cog"></i> Paramètres</a>
+                <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+              </div>
             </div>
-            <div class="password-list">
-                <div class="password-item">
-                    <div class="site-info">
-                        <div class="favicon"></div>
-                        <div>
-                            <div class="site-name">Google</div>
-                            <div class="username">utilisateur@gmail.com</div>
-                        </div>
-                    </div>
-                    <div class="actions">
-                        <button title="Copier le mot de passe">📋</button>
-                        <button title="Modifier">✏️</button>
-                        <button title="Supprimer">🗑️</button>
-                    </div>
-                </div>
-                <div class="password-item">
-                    <div class="site-info">
-                        <div class="favicon"></div>
-                        <div>
-                            <div class="site-name">Facebook</div>
-                            <div class="username">nom.utilisateur</div>
-                        </div>
-                    </div>
-                    <div class="actions">
-                        <button title="Copier le mot de passe">📋</button>
-                        <button title="Modifier">✏️</button>
-                        <button title="Supprimer">🗑️</button>
-                    </div>
-                </div>
-                <div class="password-item">
-                    <div class="site-info">
-                        <div class="favicon"></div>
-                        <div>
-                            <div class="site-name">Amazon</div>
-                            <div class="username">utilisateur@email.com</div>
-                        </div>
-                    </div>
-                    <div class="actions">
-                        <button title="Copier le mot de passe">📋</button>
-                        <button title="Modifier">✏️</button>
-                        <button title="Supprimer">🗑️</button>
-                    </div>
-                </div>
+          </div>
+        </div>
+
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-key"></i></div>
+            <div class="stat-info">
+              <h3>Mots de passe</h3>
+              <p class="stat-number">12</p>
             </div>
-            <div class="add-password">
-                <button class="btn">Ajouter un mot de passe</button>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="stat-info">
+              <h3>Vulnérables</h3>
+              <p class="stat-number">3</p>
             </div>
-        </section>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="stat-info">
+              <h3>Force moyenne</h3>
+              <div class="strength-bar">
+                <div class="strength-level" style="width: 75%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VPN Users Stats -->
+        <div class="panel connected-users">
+          <div class="panel-header">
+            <h3><i class="fas fa-users"></i> Utilisateurs connectés via VPN</h3>
+            <a href="#stats" class="panel-link">Détails</a>
+          </div>
+          <div class="users-list">
+            <div class="user-connection">
+              <div class="user-connection-info">
+                <div class="user-icon"><i class="fas fa-user"></i></div>
+                <div>
+                  <div class="user-name">Robert D.</div>
+                  <div class="connection-details">IP: 192.168.1.45 • Paris, France</div>
+                </div>
+              </div>
+              <div class="connection-status online">
+                <span class="status-dot"></span>
+                <span class="status-text">En ligne</span>
+              </div>
+            </div>
+            <div class="user-connection">
+              <div class="user-connection-info">
+                <div class="user-icon"><i class="fas fa-user"></i></div>
+                <div>
+                  <div class="user-name">Marie L.</div>
+                  <div class="connection-details">IP: 192.168.2.30 • Lyon, France</div>
+                </div>
+              </div>
+              <div class="connection-status online">
+                <span class="status-dot"></span>
+                <span class="status-text">En ligne</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Passwords View (hidden by default) -->
+      <section id="passwords-view" class="view">
+        <div class="section-header">
+          <h2><i class="fas fa-key"></i> Mes mots de passe</h2>
+          <div class="search-bar">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="password-search" placeholder="Rechercher un site ou un nom d'utilisateur...">
+          </div>
+        </div>
+        
+        <div class="password-controls">
+          <div class="filter-options">
+            <button class="btn btn-filter active">Tous <span class="count">12</span></button>
+            <button class="btn btn-filter">Favoris <span class="count">5</span></button>
+          </div>
+          <button class="btn btn-primary" id="add-password-btn">
+            <i class="fas fa-plus"></i> Ajouter un mot de passe
+          </button>
+        </div>
+
+        <div class="password-list full-list">
+          <div class="password-item">
+            <div class="site-info">
+              <div class="favicon"><i class="fab fa-google"></i></div>
+              <div>
+                <div class="site-name">Google</div>
+                <div class="username">utilisateur@gmail.com</div>
+              </div>
+            </div>
+            <div class="password-strength">
+              <div class="strength-bar">
+                <div class="strength-level high" style="width: 90%;"></div>
+              </div>
+            </div>
+            <div class="actions">
+              <button title="Copier le mot de passe" class="btn-copy"><i class="fas fa-copy"></i></button>
+              <button title="Modifier" class="btn-edit"><i class="fas fa-edit"></i></button>
+              <button title="Supprimer" class="btn-delete"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+          <div class="password-item">
+            <div class="site-info">
+              <div class="favicon"><i class="fab fa-facebook"></i></div>
+              <div>
+                <div class="site-name">Facebook</div>
+                <div class="username">nom.utilisateur</div>
+              </div>
+            </div>
+            <div class="password-strength">
+              <div class="strength-bar">
+                <div class="strength-level medium" style="width: 65%;"></div>
+              </div>
+            </div>
+            <div class="actions">
+              <button title="Copier le mot de passe" class="btn-copy"><i class="fas fa-copy"></i></button>
+              <button title="Modifier" class="btn-edit"><i class="fas fa-edit"></i></button>
+              <button title="Supprimer" class="btn-delete"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+          <div class="password-item">
+            <div class="site-info">
+              <div class="favicon"><i class="fab fa-amazon"></i></div>
+              <div>
+                <div class="site-name">Amazon</div>
+                <div class="username">utilisateur@email.com</div>
+              </div>
+            </div>
+            <div class="password-strength">
+              <div class="strength-bar">
+                <div class="strength-level low" style="width: 35%;"></div>
+              </div>
+            </div>
+            <div class="actions">
+              <button title="Copier le mot de passe" class="btn-copy"><i class="fas fa-copy"></i></button>
+              <button title="Modifier" class="btn-edit"><i class="fas fa-edit"></i></button>
+              <button title="Supprimer" class="btn-delete"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Other views are hidden by default -->
+    </main>
+  </div>
+  
+  <!-- Modal for adding/editing passwords -->
+  <div class="modal" id="password-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Ajouter un mot de passe</h3>
+        <button class="close-modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="password-form">
+          <div class="form-group">
+            <label for="site-name">Site</label>
+            <input type="text" id="site-name" placeholder="Nom du site">
+          </div>
+          <div class="form-group">
+            <label for="site-url">URL</label>
+            <input type="url" id="site-url" placeholder="https://exemple.com">
+          </div>
+          <div class="form-group">
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username-field" placeholder="Nom d'utilisateur ou email">
+          </div>
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <div class="password-input-container">
+              <input type="password" id="password-field" placeholder="Mot de passe">
+              <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password-notes">Notes</label>
+            <textarea id="password-notes" placeholder="Notes supplémentaires"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="cancel-password">Annuler</button>
+        <button class="btn btn-primary" id="save-password">Enregistrer</button>
+      </div>
     </div>
-
-    <script src="script.js"></script>
+  </div>
+  
+  <script src="script.js"></script>
 </body>
 </html>
