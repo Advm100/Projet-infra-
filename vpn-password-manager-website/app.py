@@ -7,17 +7,21 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/vpn')
-def vpn():
-    return render_template('vpn.html')
+@app.route('/generator')
+def generator():
+    return render_template('generator.html')
 
-@app.route('/password-manager')
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
+
+@app.route('/stats')
+def stats():
+    return render_template('stats.html')
+
+@app.route('/passwords')
 def password_manager():
-    return render_template('password-manager.html')
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
+    return render_template('passwords.html')
 
 @app.route('/inscription')
 def inscription():

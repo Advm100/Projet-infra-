@@ -3,46 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - Gestionnaire de mots de passe</title>
-    <link rel="stylesheet" href="votre-fichier-css.css"> <!-- Si vous avez un fichier CSS -->
+    <title>Inscription - SecurPass</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables pour les couleurs et thèmes */
+        :root {
+            --primary-color: #4361ee;
+            --primary-dark: #3a56d4;
+            --primary-light: #4895ef;
+            --secondary-color: #560bad;
+            --danger-color: #ef476f;
+            --warning-color: #ffd166;
+            --success-color: #06d6a0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        button {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        /* Authentication */
+        .auth-section {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .auth-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .auth-header {
+            margin-bottom: 30px;
+        }
+
+        .auth-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .auth-header h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .auth-header p {
+            color: var(--gray-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-check input {
+            margin-right: 10px;
+        }
+
+        .password-input-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--gray-color);
+        }
+
+        .strength-meter {
+            height: 5px;
+            width: 100%;
+            background-color: var(--light-gray);
+            margin-top: 8px;
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .strength-meter-fill {
+            height: 100%;
+            border-radius: 3px;
+            width: 0%;
+            transition: var(--transition);
+        }
+
+        .strength-text {
+            font-size: 12px;
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        .weak {
+            width: 33%;
+            background-color: var(--danger-color);
+        }
+
+        .medium {
+            width: 66%;
+            background-color: var(--warning-color);
+        }
+
+        .strong {
+            width: 100%;
+            background-color: var(--success-color);
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 500;
+            text-align: center;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            border: none;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .auth-footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: var(--gray-color);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: var(--gray-color);
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--light-gray);
+        }
+
+        .divider span {
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            background-color: var(--light-gray);
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .google:hover {
+            background-color: #DB4437;
+            color: white;
+        }
+
+        .facebook:hover {
+            background-color: #4267B2;
+            color: white;
+        }
+
+        .apple:hover {
+            background-color: #000;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <!-- Votre en-tête, peut-être un logo ou un menu de navigation -->
-        <h1>Créer un compte</h1>
-    </header>
-    
-    <main>
-        <form action="traitement-inscription.php" method="post"> <!-- Remplacez par votre méthode de traitement -->
-            <div>
-                <label for="nom">Nom</label>
-                <input type="text" id="nom" name="nom" required>
+    <div class="auth-section">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h2>Créer un compte SecurPass</h2>
+                <p>Votre gestionnaire de mots de passe sécurisé</p>
             </div>
-            
-            <div>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="fullname">Nom complet</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Entrez votre nom complet" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Adresse e-mail</label>
+                    <input type="email" id="email" name="email" placeholder="Entrez votre adresse e-mail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="masterPassword">Mot de passe principal</label>
+                    <div class="password-input-container">
+                        <input type="password" id="masterPassword" name="masterPassword" placeholder="Créez un mot de passe principal fort" required>
+                        <button type="button" class="toggle-password" id="toggleMasterPassword">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="strength-meter">
+                        <div class="strength-meter-fill" id="passwordStrength"></div>
+                    </div>
+                    <div class="strength-text" id="strengthText">Force du mot de passe</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmer le mot de passe</label>
+                    <div class="password-input-container">
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmez votre mot de passe principal" required>
+                        <button type="button" class="toggle-password" id="toggleConfirmPassword">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                    <label for="agreeTerms">J'accepte les <a href="#">Conditions d'utilisation</a> et la <a href="#">Politique de confidentialité</a></label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Créer mon compte</button>
+            </form>
+
+            <div class="divider">
+                <span>ou inscrivez-vous avec</span>
             </div>
-            
-            <div>
-                <label for="mot-de-passe">Mot de passe</label>
-                <input type="password" id="mot-de-passe" name="mot-de-passe" required>
+
+            <div class="social-login">
+                <a href="#" class="social-btn google">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="#" class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-btn apple">
+                    <i class="fab fa-apple"></i>
+                </a>
             </div>
-            
-            <div>
-                <label for="confirmation-mot-de-passe">Confirmer le mot de passe</label>
-                <input type="password" id="confirmation-mot-de-passe" name="confirmation-mot-de-passe" required>
+
+            <div class="auth-footer">
+               <p> Vous avez déjà un compte? <a href="/home.html" id="register-link">Connectez-vous</a></p>
             </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        document.getElementById('toggleMasterPassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('masterPassword');
+            const icon = this.querySelector('i');
             
-            <button type="submit">Créer mon compte</button>
-        </form>
-        
-        <p>Déjà un compte ? <a href="index.html">Se connecter</a></p>
-    </main>
-    
-    <footer>
-        <!-- Votre pied de page -->
-        <p>&copy; 2025 Gestionnaire de mots de passe</p>
-    </footer>
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+
+        document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('confirmPassword');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+
+        // Password strength meter
+        document.getElementById('masterPassword').addEventListener('input', function() {
+            const password = this.value;
+            const strengthMeter = document.getElementById('passwordStrength');
+            const strengthText = document.getElementById('strengthText');
+            
+            // Simple password strength check
+            let strength = 0;
+            if (password.length > 6) strength += 1;
+            if (password.length > 10) strength += 1;
+            if (/[A-Z]/.test(password)) strength += 1;
+            if (/[0-9]/.test(password)) strength += 1;
+            if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+            
+            // Update strength meter
+            strengthMeter.className = 'strength-meter-fill';
+            if (strength <= 2) {
+                strengthMeter.classList.add('weak');
+                strengthText.textContent = 'Faible';
+            } else if (strength <= 4) {
+                strengthMeter.classList.add('medium');
+                strengthText.textContent = 'Moyen';
+            } else {
+                strengthMeter.classList.add('strong');
+                strengthText.textContent = 'Fort';
+            }
+        });
+
+        // Form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('masterPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Les mots de passe ne correspondent pas!');
+                return;
+            }
+            
+            // Here you would typically send the form data to your server
+            alert('Compte créé avec succès! Redirection vers la page de connexion...');
+        });
+    </script>
 </body>
 </html>
