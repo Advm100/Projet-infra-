@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres - SecurPass</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables pour les couleurs et thèmes */
+        :root {
+            --primary-color: #4361ee;
+            --primary-dark: #3a56d4;
+            --primary-light: #4895ef;
+            --secondary-color: #560bad;
+            --danger-color: #ef476f;
+            --warning-color: #ffd166;
+            --success-color: #06d6a0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-section {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .auth-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .auth-header {
+            margin-bottom: 30px;
+        }
+
+        .auth-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .auth-header h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .auth-header p {
+            color: var(--gray-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-check input {
+            margin-right: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 500;
+            text-align: center;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            border: none;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-section">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-icon">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <h2>Paramètres</h2>
+                <p>Personnalisez votre expérience</p>
+            </div>
+
+            <form id="settingsForm">
+                <div class="form-group">
+                    <label for="currentPassword">Mot de passe actuel</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="newPassword">Nouveau mot de passe</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmNewPassword">Confirmer le nouveau mot de passe</label>
+                    <input type="password" id="confirmNewPassword" required>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" id="enable2FA">
+                    <label for="enable2FA">Activer la vérification en deux étapes (2FA)</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

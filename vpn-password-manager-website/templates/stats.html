@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiques - SecurPass</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables pour les couleurs et thèmes */
+        :root {
+            --primary-color: #4361ee;
+            --primary-dark: #3a56d4;
+            --primary-light: #4895ef;
+            --secondary-color: #560bad;
+            --danger-color: #ef476f;
+            --warning-color: #ffd166;
+            --success-color: #06d6a0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-section {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .auth-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .auth-header {
+            margin-bottom: 30px;
+        }
+
+        .auth-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .auth-header h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .auth-header p {
+            color: var(--gray-color);
+        }
+
+        .stats-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stat-card {
+            display: flex;
+            align-items: center;
+            background: var(--light-color);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .stat-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-right: 15px;
+        }
+
+        .stat-info {
+            flex: 1;
+        }
+
+        .stat-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+
+        .strength-bar {
+            height: 10px;
+            background: var(--light-gray);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .strength-level {
+            height: 100%;
+            background: var(--success-color);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-section">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h2>Statistiques</h2>
+                <p>Vos données en un coup d'œil</p>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-key"></i></div>
+                    <div class="stat-info">
+                        <h3>Mots de passe</h3>
+                        <p class="stat-number">25</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="stat-info">
+                        <h3>Mots de passe faibles</h3>
+                        <p class="stat-number">5</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="stat-info">
+                        <h3>Force moyenne</h3>
+                        <div class="strength-bar">
+                            <div class="strength-level" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
