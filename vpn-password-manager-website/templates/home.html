@@ -65,7 +65,7 @@
               </button>
             </form>
             <div class="auth-footer">
-              <p>Pas encore de compte? <a href="#" id="register-link">S'inscrire</a></p>
+              <p>Pas encore de compte ? <a href="../templates/inscription.html" id="register-link">S'inscrire</a></p>
             </div>
           </div>
         </div>
@@ -280,7 +280,26 @@
       </div>
     </div>
   </div>
-  
   <script src="script.js"></script>
+  <script>document.getElementById("login-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const username = document.getElementById("username").value;
+    const masterPassword = document.getElementById("master-password").value;
+
+    if (username === "admin" && masterPassword === "securepass") {
+        alert("Connexion réussie!");
+        // Tu peux ici faire une redirection ou changer l'état du formulaire
+    } else {
+        alert("Nom d'utilisateur ou mot de passe incorrect.");
+    }
+});
+
+// Affichage du mot de passe
+document.querySelector(".toggle-password").addEventListener("click", function() {
+    const passwordField = document.getElementById("master-password");
+    const type = passwordField.type === "password" ? "text" : "password";
+    passwordField.type = type;
+});
+  </script>
 </body>
 </html>

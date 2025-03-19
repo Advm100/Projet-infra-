@@ -435,3 +435,23 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelector('.dashboard-stats .stat-card:nth-child(3) .strength-level').style.width = `${avgStrength}%`;
     }
   });
+
+  document.querySelectorAll(".sidebar nav a").forEach(link => {
+    link.addEventListener("click", function(event) {
+        event.preventDefault(); // Empêche le comportement par défaut du lien
+        const viewId = this.getAttribute("href").substring(1) + "-view";
+
+        // Masquer toutes les vues
+        document.querySelectorAll(".view, .active-view").forEach(view => {
+            view.classList.remove("active-view");
+            view.classList.add("view");
+        });
+
+        // Afficher la bonne vue
+        const selectedView = document.getElementById(viewId);
+        if (selectedView) {
+            selectedView.classList.remove("view");
+            selectedView.classList.add("active-view");
+        }
+    });
+});

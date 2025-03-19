@@ -1,3 +1,4 @@
+# type: ignore
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -17,6 +18,10 @@ def password_manager():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/inscription')
+def inscription():
+    return render_template('inscription.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
