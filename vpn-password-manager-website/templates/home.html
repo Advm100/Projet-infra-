@@ -6,6 +6,391 @@
   <title>SecurePass - Gestionnaire de mots de passe</title>
   <link rel="stylesheet" href="../static/css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Styles supplémentaires pour la page d'accueil */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-dark), var(--secondary-color));
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+      border-radius: var(--border-radius);
+      margin-bottom: 40px;
+      box-shadow: var(--box-shadow);
+    }
+
+    .hero-title {
+      font-size: 48px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .features-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .feature-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-icon {
+      font-size: 48px;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    .feature-title {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: var(--dark-color);
+    }
+
+    .feature-description {
+      color: var(--gray-color);
+    }
+
+    .security-section {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 40px;
+      box-shadow: var(--box-shadow);
+      margin-bottom: 40px;
+    }
+
+    .security-title {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: var(--dark-color);
+      text-align: center;
+    }
+
+    .security-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .security-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .security-image i {
+      font-size: 120px;
+      color: var(--primary-color);
+    }
+
+    .security-text {
+      flex: 2;
+    }
+
+    .security-features {
+      margin-top: 20px;
+    }
+
+    .security-feature {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .security-feature i {
+      color: var(--success-color);
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+      color: white;
+      padding: 60px 40px;
+      border-radius: var(--border-radius);
+      text-align: center;
+      box-shadow: var(--box-shadow);
+    }
+
+    .cta-title {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .cta-description {
+      font-size: 18px;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-large {
+      padding: 15px 30px;
+      font-size: 18px;
+    }
+
+    .stats-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .stat-item {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 20px;
+      box-shadow: var(--box-shadow);
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .testimonials-section {
+      margin: 40px 0;
+    }
+
+    .testimonial-wrapper {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      padding: 20px 0;
+    }
+
+    .testimonial-card {
+      flex: 0 0 400px;
+      scroll-snap-align: start;
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: var(--box-shadow);
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: var(--dark-color);
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+    }
+
+    .testimonial-avatar i {
+      font-size: 24px;
+      color: var(--gray-color);
+    }
+
+    .testimonial-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      color: var(--dark-color);
+    }
+
+    .testimonial-role {
+      font-size: 14px;
+      color: var(--gray-color);
+    }
+
+    .footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 40px 20px;
+      margin-top: 80px;
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-title {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .footer-links a {
+      display: block;
+      color: var(--light-gray);
+      margin-bottom: 10px;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      background-color: var(--primary-color);
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: var(--light-gray);
+      font-size: 14px;
+    }
+
+    /* Animation classes */
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .slide-up {
+      animation: slideUp 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .security-content {
+        flex-direction: column;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+      }
+    }
+
+    /* Styles pour la page de connexion */
+    .login-page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 40px);
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-dark);
+      color: white;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* Animation for counter */
+    .counter-animation {
+      display: inline-block;
+      animation: countUp 2s ease-out forwards;
+    }
+
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
   <div class="app-container">
@@ -17,6 +402,8 @@
       </div>
       <nav>
         <ul>
+          <li><a href="/"><i class="fas fa-home"></i> Accueil</a></li>
+          <li><a href="/connexion"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
           <li><a href="/passwords"><i class="fas fa-key"></i> Mots de passe</a></li>
           <li><a href="/generator"><i class="fas fa-dice"></i> Générateur</a></li>
           <li><a href="/stats"><i class="fas fa-chart-line"></i> Statistiques</a></li>
@@ -34,43 +421,230 @@
 
     <!-- Main Content -->
     <main class="main-content">
-      <!-- Login View -->
-      <section id="login-view" class="active-view">
-        <div class="auth-section">
-          <div class="auth-card">
-            <div class="auth-header">
-              <i class="fas fa-shield-alt auth-icon"></i>
-              <h2>Connexion à SecurePass</h2>
-              <p>Gestionnaire de mots de passe sécurisé</p>
+      <!-- Page d'accueil -->
+      <section id="home-view" class="active-view">
+        <!-- Hero Section -->
+        <div class="hero-section fade-in">
+          <h1 class="hero-title">Protégez vos mots de passe avec SecurePass</h1>
+          <p class="hero-subtitle">La solution complète pour gérer et sécuriser tous vos mots de passe en un seul endroit. Simple, sécurisé et accessible partout.</p>
+          <div class="hero-buttons">
+            <a href="/inscription" class="btn btn-large">S'inscrire gratuitement</a>
+            <a href="/connexion" class="btn btn-outline btn-large">Se connecter</a>
+          </div>
+        </div>
+
+        <!-- Statistiques -->
+        <div class="stats-section slide-up">
+          <div class="stat-item">
+            <div class="stat-number counter-animation" data-target="10000">10,000+</div>
+            <div class="stat-label">Utilisateurs actifs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number counter-animation" data-target="1000000">1,000,000+</div>
+            <div class="stat-label">Mots de passe protégés</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number counter-animation" data-target="99">99.9%</div>
+            <div class="stat-label">Uptime</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number counter-animation" data-target="256">256-bit</div>
+            <div class="stat-label">Cryptage AES</div>
+          </div>
+        </div>
+
+        <!-- Caractéristiques -->
+        <div class="features-section slide-up">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-lock"></i>
             </div>
-            <form id="login-form">
-              <div class="form-group">
-                <label for="username"><i class="fas fa-user"></i> Nom d'utilisateur</label>
-                <input type="text" id="username" placeholder="Entrez votre nom d'utilisateur">
-              </div>
-              <div class="form-group">
-                <label for="master-password"><i class="fas fa-lock"></i> Mot de passe principal</label>
-                <div class="password-input-container">
-                  <input type="password" id="master-password" placeholder="Entrez votre mot de passe principal">
-                  <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
+            <h3 class="feature-title">Sécurité avancée</h3>
+            <p class="feature-description">Protégez vos données avec un cryptage AES 256-bit et l'authentification à deux facteurs.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-sync-alt"></i>
+            </div>
+            <h3 class="feature-title">Synchronisation automatique</h3>
+            <p class="feature-description">Accédez à vos mots de passe sur tous vos appareils avec une synchronisation instantanée.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-dice"></i>
+            </div>
+            <h3 class="feature-title">Générateur intelligent</h3>
+            <p class="feature-description">Créez des mots de passe forts et uniques en un seul clic avec notre générateur avancé.</p>
+          </div>
+        </div>
+
+        <!-- Section sécurité -->
+        <div class="security-section slide-up">
+          <h2 class="security-title">Votre sécurité est notre priorité</h2>
+          <div class="security-content">
+            <div class="security-image">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="security-text">
+              <p>SecurePass utilise les technologies de cryptage les plus avancées pour protéger vos informations sensibles. Votre mot de passe principal ne quitte jamais votre appareil, et toutes vos données sont chiffrées localement avant d'être synchronisées avec nos serveurs.</p>
+              <div class="security-features">
+                <div class="security-feature">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Cryptage AES 256-bit de niveau militaire</span>
+                </div>
+                <div class="security-feature">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Authentification à deux facteurs</span>
+                </div>
+                <div class="security-feature">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Architecture à connaissance zéro</span>
+                </div>
+                <div class="security-feature">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Alertes de sécurité en temps réel</span>
                 </div>
               </div>
-              <div class="form-check">
-                <input type="checkbox" id="remember-me">
-                <label for="remember-me">Se souvenir de moi</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Témoignages -->
+        <div class="testimonials-section slide-up">
+          <h2 class="security-title">Ce que nos utilisateurs disent</h2>
+          <div class="testimonial-wrapper">
+            <div class="testimonial-card">
+              <p class="testimonial-text">"SecurePass a complètement transformé ma façon de gérer mes mots de passe. Je n'ai plus à m'inquiéter de les oublier ou de les compromettre."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="testimonial-info">
+                  <div class="testimonial-name">Sophie Martin</div>
+                  <div class="testimonial-role">Développeuse Web</div>
+                </div>
               </div>
-              <button type="submit" class="btn btn-primary btn-login">
-                <i class="fas fa-sign-in-alt"></i> Se connecter
-              </button>
-            </form>
-            <div class="auth-footer">
-              <p>Pas encore de compte ? <a href="/inscription" id="register-link">S'inscrire</a></p>
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-text">"L'interface est intuitive et le générateur de mots de passe est exactement ce dont j'avais besoin. Je recommande fortement ce service."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="testimonial-info">
+                  <div class="testimonial-name">Thomas Dubois</div>
+                  <div class="testimonial-role">Entrepreneur</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-text">"La tranquillité d'esprit que j'ai maintenant avec SecurePass est inestimable. C'est un outil essentiel pour quiconque se soucie de sa sécurité en ligne."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="testimonial-info">
+                  <div class="testimonial-name">Émilie Lefèvre</div>
+                  <div class="testimonial-role">Responsable Marketing</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section fade-in">
+          <h2 class="cta-title">Prêt à sécuriser vos mots de passe ?</h2>
+          <p class="cta-description">Rejoignez des milliers d'utilisateurs qui font confiance à SecurePass pour protéger leurs informations sensibles.</p>
+          <a href="/inscription" class="btn btn-large">Commencer gratuitement</a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="footer-content">
+            <div class="footer-column">
+              <h3 class="footer-title">SecurePass</h3>
+              <p>Votre solution complète pour la gestion des mots de passe et la sécurité en ligne.</p>
+              <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+            <div class="footer-column">
+              <h3 class="footer-title">Liens rapides</h3>
+              <div class="footer-links">
+                <a href="/">Accueil</a>
+                <a href="/inscription">S'inscrire</a>
+                <a href="/connexion">Se connecter</a>
+                <a href="/tarifs">Tarifs</a>
+                <a href="/faq">FAQ</a>
+              </div>
+            </div>
+            <div class="footer-column">
+              <h3 class="footer-title">Ressources</h3>
+              <div class="footer-links">
+                <a href="/blog">Blog</a>
+                <a href="/tutoriels">Tutoriels</a>
+                <a href="/securite">Centre de sécurité</a>
+                <a href="/support">Support</a>
+              </div>
+            </div>
+            <div class="footer-column">
+              <h3 class="footer-title">Contact</h3>
+              <div class="footer-links">
+                <a href="mailto:contact@securepass.com"><i class="fas fa-envelope"></i> contact@securepass.com</a>
+                <a href="tel:+33123456789"><i class="fas fa-phone"></i> +33 1 23 45 67 89</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> Paris, France</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2025 SecurePass. Tous droits réservés.</p>
+          </div>
+        </footer>
+      </section>
+
+      <!-- Page de connexion -->
+      <section id="login-page-view" class="view">
+        <div class="login-page">
+          <div class="login-container">
+            <div class="auth-card">
+              <div class="auth-header">
+                <i class="fas fa-shield-alt auth-icon"></i>
+                <h2>Connexion à SecurePass</h2>
+                <p>Gestionnaire de mots de passe sécurisé</p>
+              </div>
+              <form id="login-form" action="/login" method="POST">
+                <div class="form-group">
+                  <label for="username"><i class="fas fa-user"></i> Nom d'utilisateur</label>
+                  <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" required>
+                </div>
+                <div class="form-group">
+                  <label for="password"><i class="fas fa-lock"></i> Mot de passe</label>
+                  <div class="password-input-container">
+                    <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+                    <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
+                  </div>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" id="remember-me">
+                  <label for="remember-me">Se souvenir de moi</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-login">
+                  <i class="fas fa-sign-in-alt"></i> Se connecter
+                </button>
+              </form>
+              <div class="auth-footer">
+                <p>Pas encore de compte ? <a href="/inscription" id="register-link">S'inscrire</a></p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Dashboard View (hidden by default) -->
+      <!-- Conservation de votre Dashboard View -->
       <section id="dashboard-view" class="view">
         <div class="dashboard-header">
           <h2><i class="fas fa-tachometer-alt"></i> Tableau de bord</h2>
@@ -116,188 +690,348 @@
             </div>
           </div>
         </div>
-
-        <!-- VPN Users Stats -->
-        <div class="panel connected-users">
-          <div class="panel-header">
-            <h3><i class="fas fa-users"></i> Utilisateurs connectés via VPN</h3>
-            <a href="#stats" class="panel-link">Détails</a>
-          </div>
-          <div class="users-list">
-            <div class="user-connection">
-              <div class="user-connection-info">
-                <div class="user-icon"><i class="fas fa-user"></i></div>
-                <div>
-                  <div class="user-name">Robert D.</div>
-                  <div class="connection-details">IP: 192.168.1.45 • Paris, France</div>
-                </div>
-              </div>
-              <div class="connection-status online">
-                <span class="status-dot"></span>
-                <span class="status-text">En ligne</span>
-              </div>
-            </div>
-            <div class="user-connection">
-              <div class="user-connection-info">
-                <div class="user-icon"><i class="fas fa-user"></i></div>
-                <div>
-                  <div class="user-name">Marie L.</div>
-                  <div class="connection-details">IP: 192.168.2.30 • Lyon, France</div>
-                </div>
-              </div>
-              <div class="connection-status online">
-                <span class="status-dot"></span>
-                <span class="status-text">En ligne</span>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
-
-      <!-- Passwords View (hidden by default) -->
-      <section id="passwords-view" class="view">
-        <div class="section-header">
-          <h2><i class="fas fa-key"></i> Mes mots de passe</h2>
-          <div class="search-bar">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" id="password-search" placeholder="Rechercher un site ou un nom d'utilisateur...">
-          </div>
-        </div>
-        
-        <div class="password-controls">
-          <div class="filter-options">
-            <button class="btn btn-filter active">Tous <span class="count">12</span></button>
-            <button class="btn btn-filter">Favoris <span class="count">5</span></button>
-          </div>
-          <button class="btn btn-primary" id="add-password-btn">
-            <i class="fas fa-plus"></i> Ajouter un mot de passe
-          </button>
-        </div>
-
-        <div class="password-list full-list">
-          <div class="password-item">
-            <div class="site-info">
-              <div class="favicon"><i class="fab fa-google"></i></div>
-              <div>
-                <div class="site-name">Google</div>
-                <div class="username">utilisateur@gmail.com</div>
-              </div>
-            </div>
-            <div class="password-strength">
-              <div class="strength-bar">
-                <div class="strength-level high" style="width: 90%;"></div>
-              </div>
-            </div>
-            <div class="actions">
-              <button title="Copier le mot de passe" class="btn-copy"><i class="fas fa-copy"></i></button>
-              <button title="Modifier" class="btn-edit"><i class="fas fa-edit"></i></button>
-              <button title="Supprimer" class="btn-delete"><i class="fas fa-trash"></i></button>
-            </div>
-          </div>
-          <div class="password-item">
-            <div class="site-info">
-              <div class="favicon"><i class="fab fa-facebook"></i></div>
-              <div>
-                <div class="site-name">Facebook</div>
-                <div class="username">nom.utilisateur</div>
-              </div>
-            </div>
-            <div class="password-strength">
-              <div class="strength-bar">
-                <div class="strength-level medium" style="width: 65%;"></div>
-              </div>
-            </div>
-            <div class="actions">
-              <button title="Copier le mot de passe" class="btn-copy"><i class="fas fa-copy"></i></button>
-              <button title="Modifier" class="btn-edit"><i class="fas fa-edit"></i></button>
-              <button title="Supprimer" class="btn-delete"><i class="fas fa-trash"></i></button>
-            </div>
-          </div>
-          <div class="password-item">
-            <div class="site-info">
-              <div class="favicon"><i class="fab fa-amazon"></i></div>
-              <div>
-                <div class="site-name">Amazon</div>
-                <div class="username">utilisateur@email.com</div>
-              </div>
-            </div>
-            <div class="password-strength">
-              <div class="strength-bar">
-                <div class="strength-level low" style="width: 35%;"></div>
-              </div>
-            </div>
-            <div class="actions">
-              <button title="Copier le mot de passe" class="btn-copy"><i class="fas fa-copy"></i></button>
-              <button title="Modifier" class="btn-edit"><i class="fas fa-edit"></i></button>
-              <button title="Supprimer" class="btn-delete"><i class="fas fa-trash"></i></button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Other views are hidden by default -->
     </main>
   </div>
+
+  <script>
+    // Animation des compteurs
+    document.addEventListener('DOMContentLoaded', function() {
+      const counters = document.querySelectorAll('.counter-animation');
+      
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const text = counter.textContent;
+        let count = 0;
+        const speed = 2000 / target;
+        
+        const updateCount = () => {
+          if (count < target) {
+            count += Math.ceil(target / 100);
+            if (count > target) count = target;
+            
+            // Formater le nombre avec des séparateurs
+            const formattedCount = new Intl.NumberFormat().format(count);
+            
+            // Conserver le format du texte original
+            if (text.includes('%')) {
+              counter.textContent = count + '%';
+            } else if (text.includes('-bit')) {
+              counter.textContent = count + '-bit';
+            } else if (text.includes('+')) {
+              counter.textContent = formattedCount + '+';
+            } else {
+              counter.textContent = formattedCount;
+            }
+            
+            if (count < target) {
+              setTimeout(updateCount, speed);
+            }
+          }
+        };
+        
+        updateCount();
+      });
+    });
+
+   // Navigation
+document.addEventListener('DOMContentLoaded', function() {
+  // Simulation d'une base de données d'utilisateurs (à remplacer par votre véritable système)
+  const users = [
+    { username: "admin", password: "admin123" },
+    { username: "user", password: "user123" }
+  ];
   
-  <!-- Modal for adding/editing passwords -->
-  <div class="modal" id="password-modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>Ajouter un mot de passe</h3>
-        <button class="close-modal"><i class="fas fa-times"></i></button>
+  const navLinks = document.querySelectorAll('.sidebar nav a');
+  
+  // Création des sections pour chaque page si elles n'existent pas déjà
+  if (!document.getElementById('generator-view')) {
+    const generatorView = document.createElement('section');
+    generatorView.id = 'generator-view';
+    generatorView.className = 'view';
+    generatorView.innerHTML = `
+      <div class="dashboard-header">
+        <h2><i class="fas fa-dice"></i> Générateur de mot de passe</h2>
       </div>
-      <div class="modal-body">
-        <form id="password-form">
-          <div class="form-group">
-            <label for="site-name">Site</label>
-            <input type="text" id="site-name" placeholder="Nom du site">
+      <div class="generator-container">
+        <div class="card">
+          <div class="card-header">
+            <h3>Créer un mot de passe fort</h3>
           </div>
-          <div class="form-group">
-            <label for="site-url">URL</label>
-            <input type="url" id="site-url" placeholder="https://exemple.com">
-          </div>
-          <div class="form-group">
-            <label for="username">Nom d'utilisateur</label>
-            <input type="text" id="username-field" placeholder="Nom d'utilisateur ou email">
-          </div>
-          <div class="form-group">
-            <label for="password">Mot de passe</label>
-            <div class="password-input-container">
-              <input type="password" id="password-field" placeholder="Mot de passe">
-              <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
+          <div class="card-body">
+            <div class="form-group">
+              <label>Longueur du mot de passe</label>
+              <input type="range" id="password-length" min="8" max="32" value="16">
+              <span id="length-value">16</span> caractères
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="include-uppercase" checked>
+              <label for="include-uppercase">Inclure des majuscules (A-Z)</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="include-lowercase" checked>
+              <label for="include-lowercase">Inclure des minuscules (a-z)</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="include-numbers" checked>
+              <label for="include-numbers">Inclure des chiffres (0-9)</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="include-symbols" checked>
+              <label for="include-symbols">Inclure des symboles (!@#$%)</label>
+            </div>
+            <button id="generate-btn" class="btn btn-primary">Générer</button>
+            <div class="password-result">
+              <input type="text" id="generated-password" readonly>
+              <button id="copy-password" class="btn btn-outline"><i class="fas fa-copy"></i></button>
             </div>
           </div>
-          <div class="form-group">
-            <label for="password-notes">Notes</label>
-            <textarea id="password-notes" placeholder="Notes supplémentaires"></textarea>
+        </div>
+      </div>
+    `;
+    document.querySelector('.main-content').appendChild(generatorView);
+  }
+  
+  if (!document.getElementById('stats-view')) {
+    const statsView = document.createElement('section');
+    statsView.id = 'stats-view';
+    statsView.className = 'view';
+    statsView.innerHTML = `
+      <div class="dashboard-header">
+        <h2><i class="fas fa-chart-line"></i> Statistiques</h2>
+      </div>
+      <div class="stats-container">
+        <div class="card">
+          <div class="card-header">
+            <h3>Analyse de vos mots de passe</h3>
           </div>
-        </form>
+          <div class="card-body">
+            <div class="stats-grid">
+              <div class="stat-box">
+                <h4>Force moyenne</h4>
+                <div class="strength-bar">
+                  <div class="strength-level" style="width: 70%;"></div>
+                </div>
+                <p>70% - Fort</p>
+              </div>
+              <div class="stat-box">
+                <h4>Mots de passe réutilisés</h4>
+                <div class="stat-circle danger">3</div>
+              </div>
+              <div class="stat-box">
+                <h4>Mots de passe vulnérables</h4>
+                <div class="stat-circle warning">5</div>
+              </div>
+              <div class="stat-box">
+                <h4>Mots de passe forts</h4>
+                <div class="stat-circle success">8</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline" id="cancel-password">Annuler</button>
-        <button class="btn btn-primary" id="save-password">Enregistrer</button>
+    `;
+    document.querySelector('.main-content').appendChild(statsView);
+  }
+  
+  if (!document.getElementById('settings-view')) {
+    const settingsView = document.createElement('section');
+    settingsView.id = 'settings-view';
+    settingsView.className = 'view';
+    settingsView.innerHTML = `
+      <div class="dashboard-header">
+        <h2><i class="fas fa-cog"></i> Paramètres</h2>
       </div>
-    </div>
-  </div>
-  <script src="script.js"></script>
-  <script>document.getElementById("login-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const username = document.getElementById("username").value;
-    const masterPassword = document.getElementById("master-password").value;
-
-    if (username === "admin" && masterPassword === "securepass") {
-        alert("Connexion réussie!");
-        // Tu peux ici faire une redirection ou changer l'état du formulaire
-    } else {
-        alert("Nom d'utilisateur ou mot de passe incorrect.");
+      <div class="settings-container">
+        <div class="card">
+          <div class="card-header">
+            <h3>Préférences</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="theme-select">Thème</label>
+              <select id="theme-select" class="form-control">
+                <option value="light">Clair</option>
+                <option value="dark">Sombre</option>
+                <option value="system">Système</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="timeout-select">Déconnexion automatique</label>
+              <select id="timeout-select" class="form-control">
+                <option value="5">5 minutes</option>
+                <option value="15">15 minutes</option>
+                <option value="30">30 minutes</option>
+                <option value="60">1 heure</option>
+                <option value="0">Jamais</option>
+              </select>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="enable-2fa" class="form-check-input">
+              <label for="enable-2fa">Activer l'authentification à deux facteurs</label>
+            </div>
+            <button id="save-settings" class="btn btn-primary">Enregistrer</button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.querySelector('.main-content').appendChild(settingsView);
+  }
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const href = this.getAttribute('href');
+      
+      // Gestion de la navigation avec redirection vers les vraies pages
+      if (href === '/') {
+        showView('home-view');
+      } else if (href === '/connexion') {
+        showView('login-page-view');
+      } else if (href === '/passwords') {
+        // Vérifier si l'utilisateur est connecté
+        if (isLoggedIn()) {
+          showView('dashboard-view');
+        } else {
+          showView('login-page-view');
+          alert("Veuillez vous connecter pour accéder à vos mots de passe.");
+        }
+      } else if (href === '/generator') {
+        showView('generator-view');
+      } else if (href === '/stats') {
+        showView('stats-view');
+      } else if (href === '/settings') {
+        showView('settings-view');
+      }
+      
+      // Mettre à jour la classe active
+      navLinks.forEach(navLink => {
+        navLink.parentElement.classList.remove('active');
+      });
+      this.parentElement.classList.add('active');
+    });
+  });
+  
+  // Fonction pour vérifier si l'utilisateur est connecté
+  function isLoggedIn() {
+    return document.querySelector('.status').classList.contains('online');
+  }
+  
+  // Fonction pour afficher une vue
+  function showView(viewId) {
+    const views = document.querySelectorAll('.view, .active-view');
+    views.forEach(view => {
+      view.classList.remove('active-view');
+      view.classList.add('view');
+    });
+    
+    const viewToShow = document.getElementById(viewId);
+    if (viewToShow) {
+      viewToShow.classList.remove('view');
+      viewToShow.classList.add('active-view');
     }
-});
+  }
+  
+  // Bouton de basculement du mot de passe
+  const togglePasswordButtons = document.querySelectorAll('.toggle-password');
+  togglePasswordButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const passwordInput = this.previousElementSibling;
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+    });
+  });
 
-// Affichage du mot de passe
-document.querySelector(".toggle-password").addEventListener("click", function() {
-    const passwordField = document.getElementById("master-password");
-    const type = passwordField.type === "password" ? "text" : "password";
-    passwordField.type = type;
+  // Gestion du formulaire de connexion avec vérification d'utilisateur
+  const loginForm = document.getElementById('login-form');
+  if (loginForm) {
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Récupération des valeurs du formulaire
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      // Vérification de l'existence de l'utilisateur
+      const user = users.find(u => u.username === username && u.password === password);
+      
+      if (user) {
+        // L'utilisateur existe et le mot de passe est correct
+        const userNameElement = document.querySelector('.username');
+        const userStatusElement = document.querySelector('.status');
+        
+        if (userNameElement && userStatusElement) {
+          userNameElement.textContent = username;
+          userStatusElement.textContent = "Connecté";
+          userStatusElement.classList.remove('offline');
+          userStatusElement.classList.add('online');
+        }
+        
+        // Redirection vers la page d'accueil
+        showView('home-view');
+        
+        // Message de bienvenue
+        alert("Bienvenue, " + username + " !");
+      } else {
+        // L'utilisateur n'existe pas ou le mot de passe est incorrect
+        alert("Nom d'utilisateur ou mot de passe incorrect.");
+      }
+    });
+  }
+  
+  // Fonctionnalité du générateur de mot de passe
+  const generateBtn = document.getElementById('generate-btn');
+  if (generateBtn) {
+    generateBtn.addEventListener('click', function() {
+      const length = document.getElementById('password-length').value;
+      const includeUppercase = document.getElementById('include-uppercase').checked;
+      const includeLowercase = document.getElementById('include-lowercase').checked;
+      const includeNumbers = document.getElementById('include-numbers').checked;
+      const includeSymbols = document.getElementById('include-symbols').checked;
+      
+      const generatedPassword = generatePassword(length, includeUppercase, includeLowercase, includeNumbers, includeSymbols);
+      document.getElementById('generated-password').value = generatedPassword;
+    });
+  }
+  
+  // Copier le mot de passe généré
+  const copyPasswordBtn = document.getElementById('copy-password');
+  if (copyPasswordBtn) {
+    copyPasswordBtn.addEventListener('click', function() {
+      const passwordField = document.getElementById('generated-password');
+      passwordField.select();
+      document.execCommand('copy');
+      alert('Mot de passe copié dans le presse-papiers!');
+    });
+  }
+  
+  // Mise à jour de l'affichage de la longueur du mot de passe
+  const passwordLengthSlider = document.getElementById('password-length');
+  if (passwordLengthSlider) {
+    passwordLengthSlider.addEventListener('input', function() {
+      document.getElementById('length-value').textContent = this.value;
+    });
+  }
+  
+  // Fonction pour générer un mot de passe aléatoire
+  function generatePassword(length, uppercase, lowercase, numbers, symbols) {
+    let chars = '';
+    if (uppercase) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    if (lowercase) chars += 'abcdefghijklmnopqrstuvwxyz';
+    if (numbers) chars += '0123456789';
+    if (symbols) chars += '!@#$%^&*()_+~`|}{[]:;?><,./-=';
+    
+    if (chars === '') chars = 'abcdefghijklmnopqrstuvwxyz'; // Fallback to lowercase if nothing selected
+    
+    let password = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * chars.length);
+      password += chars[randomIndex];
+    }
+    return password;
+  }
 });
   </script>
 </body>
