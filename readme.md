@@ -10,7 +10,7 @@ ________
 
 ##### une fois que les VM sont allumées, on va leur configurer leur cartes réseaux, le routeur en contient 2 pour sa part et les adresse ip des ses cartes vont servir de passerelle pour les autres VM, sa première carte réseau representera le LAN1 et sa deuxième le LAN2, schématisons le tout !!
 
-![image](.\lab1_tp6.drawio(1).svg)
+![image](lab1_tp6.drawio(1).svg)
 
 ________
 
